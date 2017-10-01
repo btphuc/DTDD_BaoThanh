@@ -1,42 +1,181 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="vn">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <!-- HEADER  -->
+    <header>
+
+        <section id="top-page" class="top-link">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Đơn hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Đăng nhập</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Đăng ký</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        </section>
+
+        <div class="search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+
+                    <div class="col-md-8 col-sm-12">
+                        <form class="form-inline search-form">
+                            <input class="form-control mr-sm-2 search-text" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="main-menu">
+            <div class="container">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GIỚI THIỆU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SẢN PHẨM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TIN TỨC</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LIÊN HỆ</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
+    </header>
+    <!--HEADER  -->
+    <!-- Sản Phẩm  -->
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <!-- Sản Phẩm  -->
+    <!-- Footer  -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <h4>GIỚI THIỆU</h4>
+                        <ul>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Chương trình khuyến mãi</a></li>
+                        </ul>
+                </div>
 
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <h4>LIÊN HỆ</h4>
+                        <ul>
+                            <li><a href="#">Doanh nghiệp</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                        </ul>
+                </div>
+
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <h4>THÔNG TIN CÔNG TI</h4>
+                        <div class="box-address-content">
+                            <p>CÔNG TY TNHH </p> <br />
+                            <p><i class="fa fa-map-marker"></i> Tp.HCM</p>
+                            <p>
+                                <i class="fa fa-envelope"></i>
+                                <a href="#">dasdasdsa@gmail.com</a>
+                            </p>
+                            <p>
+                                <i class="fa fa-phone"></i>
+                                Phone: (08) 11 22 33 44
+                            </p>
+                        </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    
+                       <h4>MẠNG XÃ HỘI</h4>
+                        <ul>
+                            <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-twitter "></i></a></li>
+                        </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Footer  -->
+    <!-- Back to top  -->
+    <a class="back-to-top" href="#top-page">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Back to top  -->
+    @*javascript*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+
+            $(window).scroll( function () {
+                var offset = 200;
+                if ($(this).scrollTop() > offset){
+                    $('.back-to-top').fadeIn(400);
+                }
+                else{
+                     $('.back-to-top').fadeOut(400);
+                }
+            });
+            $('.back-to-top').click(function  (event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop : 0
+                }, 600);
+            })
+    </script>
 </body>
 </html>
+
+
+
+
+

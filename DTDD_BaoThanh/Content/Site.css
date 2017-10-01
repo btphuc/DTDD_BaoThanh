@@ -1,24 +1,198 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
+﻿input,
 select,
 textarea {
     max-width: 280px;
 }
+
+body {
+    background-color: rgba(255,255,255,.75);
+}
+
+.top-link {
+    background-color: #333;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #429a9d
+    }
+
+.search {
+    background-color: #262626;
+    height: 150px;
+}
+
+.search-form {
+    padding: 50px 0;
+}
+
+    .search-form .search-text {
+        width: 300px
+    }
+
+.search button {
+    color: #429a9d;
+    border-color: #429a9d;
+}
+
+    .search button:hover {
+        color: white;
+        background-color: #429a9d
+    }
+
+.main-menu {
+    height: 50px;
+    background-color: #333;
+    margin-bottom: 20px;
+    padding-top: 5px;
+}
+
+    .main-menu .container ul li a {
+        color: white;
+    }
+
+        .main-menu .container ul li a:hover {
+            color: rgba(255,255,255,.75);
+        }
+
+.banner-link {
+    background-color: white;
+    padding: 20px;
+}
+
+.carousel-item img {
+    max-height: 390px
+}
+
+.product-title {
+    margin-top: 20px;
+    border-top: solid 2px black;
+    border-bottom: solid 1px black;
+}
+
+    .product-title span {
+        padding-left: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+.product-filter {
+    height: 40px;
+}
+
+    .product-filter ul {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+.product-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.ds-sp {
+    text-align: center;
+}
+
+.product-img {
+    margin: 20px 0 50px 0;
+}
+
+.product-detail h4 {
+    font-size: 15px;
+    color: grey;
+    margin: 10px 0;
+}
+
+.price {
+    color: #429a9d;
+    margin: 10px 0;
+}
+
+.new-price {
+    color: #429a9d;
+    font-size: 17px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.old-price {
+    color: grey;
+    font-size: 15px;
+    text-decoration: line-through;
+    padding: 5px;
+}
+
+.product-link li {
+    height: 60px;
+    width: 60px;
+    background-color: grey;
+    padding-top: 15px;
+}
+
+    .product-link li:hover {
+        background-color: #429a9d;
+    }
+
+    .product-link li a {
+        color: white
+    }
+
+.page-list {
+    margin: 20px
+}
+
+footer {
+    background-color: #333;
+    padding: 70px;
+    color: white;
+}
+
+    footer ul {
+        padding-left: 10px;
+        margin-top: 20px
+    }
+
+        footer ul li {
+            list-style: none;
+            margin-bottom: 10px
+        }
+
+            footer ul li a {
+                color: white;
+            }
+
+                footer ul li a:hover {
+                    color: #429a9d;
+                    text-decoration: none;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    padding-left: 10px;
+                    /* transition: all 0.3s ease-in-out; */
+                }
+
+.back-to-top {
+    bottom: 40px;
+    position: fixed;
+    display: block;
+    right: 30px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: #429a9d;
+}
+
+    .back-to-top i {
+        padding-left: 14px;
+        padding-top: 12px;
+    }
+
+    .back-to-top a:hover {
+        color:white;
+    }
