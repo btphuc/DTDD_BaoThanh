@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>@ViewBag.Title</title>
 
     <!-- Bootstrap CSS -->
     @Styles.Render("~/Content/css")
@@ -69,13 +69,13 @@
             <div class="container">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TRANG CHỦ</a>
+                        <a class="nav-link" href="/">TRANG CHỦ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">GIỚI THIỆU</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SẢN PHẨM</a>
+                        <a class="nav-link" href="/Home/All">SẢN PHẨM</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">TIN TỨC</a>
@@ -155,6 +155,9 @@
     @RenderSection("scripts", required: false)
 
     <script>
+            $("[data-toggle=popover]")
+            .popover({ html: true });
+
 
             $(window).scroll( function () {
                 var offset = 200;

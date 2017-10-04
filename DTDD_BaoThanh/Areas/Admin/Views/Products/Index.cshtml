@@ -1,0 +1,215 @@
+﻿@model IEnumerable<DTDD_BaoThanh.Models.tbl_Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Danh Sách Sản Phẩm
+        <a href="~/Admin/Products/Create" style="float:right;">
+            Create <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="ProductList" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Danh Mục</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Hình Ảnh</th>
+                        <th>Màu Sắc</th>
+                        <th>Bảo hành</th>
+                        <th>Giá</th>
+                        <th>Tùy Chọn</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.tbl_Categories.Name</td>
+                            <td>@item.Name</td>
+                            <td>@item.Image</td>
+                            <td>@item.Color</td>
+                            <td>@item.Warranty</td>
+                            <td>@String.Format("{0:N0}", item.Price)</td>
+                            <td>
+                                <a href="~/Admin/Products/Edit/@item.Id" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <span data-toggle="tooltip" data-placement="top" title="Detail" >
+                                    <a href="#" data-toggle="modal" data-target="#ProductDetailForItem-@item.Id" >
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                                <span data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <a href="#" data-toggle="modal" data-target="#ProductDeleteByID-@item.Id" ><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                </span>
+
+                                @*modal for detail*@
+                                <div id="ProductDetailForItem-@item.Id" class="modal fade bd-example-modal-lg" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Chi Tiết Sản Phẩm</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <img style="margin-left:50px" src="~/Content/images/@item.Image" class="img-thumbnail">
+                                                        </div>
+                                                        <div class="col-md-6 ml-auto mr-auto">
+                                                            <h5 class="text-center" style="margin-top:32px">
+                                                                @item.Name
+                                                            </h5>
+                                                            <p class="text-muted text-center">@item.Alias</p>
+                                                            
+                                                            <p class="text-center" style="color: #429a9d; font-size: 22px;">@String.Format("{0:N0}", item.Price) VND</p>
+                                                            <p class="text-center">Số lượng : <strong>@item.Quantity</strong></p>
+                                                            <p class="text-center">Màu : <strong>@item.Color</strong></p>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <table style="margin-top:20px; margin-right:20px;">
+                                                            <tr>
+                                                                <th>Detail</th>
+                                                                <th>@item.Detail</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Size</th>
+                                                                <th>
+                                                                @if (@item.Size == null)
+                                                                {
+                                                                    <p></p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.Size
+                                                                }
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weight</th>
+                                                                <th>
+                                                                    @if (@item.Weight == null)
+                                                                    {
+                                                                        <p></p>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @item.Weight
+                                                                    }
+                                                                </th>
+                                                            </tr>
+                                                           
+                                                            <tr>
+                                                                <th>Memory</th>
+                                                                <th>
+                                                                @if (@item.Memory == null)
+                                                                {
+                                                                    <p></p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.Memory
+                                                                }
+                                                                </th>
+                                                            </tr>
+                                                            
+                                                            <tr>
+                                                                <th>Os</th>
+                                                                <th>
+                                                                @if (@item.Os == null)
+                                                                {
+                                                                    <p></p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.Os
+                                                                }
+                                                                </th>
+                                                            </tr>
+                                                            
+                                                            <tr>
+                                                                <th>CPU</th>
+                                                                <th>
+                                                                @if (@item.Cpu == null)
+                                                                {
+                                                                    <p></p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.Cpu
+                                                                }
+                                                                </th>
+                                                            </tr>
+                                                            
+                                                            <tr>
+                                                                <th>Camera</th>
+                                                                <th>
+                                                                @if (@item.Camera == null)
+                                                                {
+                                                                    <p></p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @item.Camera
+                                                                }
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Warranty</th>
+                                                                <th>@item.Warranty</th>
+                                                            </tr>
+                                                            
+                                                        </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*modal for delete*@
+                                <div id="ProductDeleteByID-@item.Id" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Xóa Sản Phẩm</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="text-info">Bạn có chắc muốn xóa Sản Phẩm này ?</p>
+                                                @if(item.Quantity > 0)
+                                                {
+                                                    <p class="text-danger">Hiện trong kho còn @item.Quantity sản phẩm này</p>
+                                                }
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                                <button type="button" class="btn btn-primary" disabled>Xóa</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>                        
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

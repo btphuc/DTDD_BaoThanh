@@ -20,13 +20,38 @@ namespace DTDD_BaoThanh
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/popper.min.js",
                       "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/jquery.easing.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/Site.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/PagedList.css"));
+
+
+            // Addmin bundles 
+
+            bundles.Add(new StyleBundle("~/Admin-DashboardCss").Include(
+                       "~/Content/bootstrap.min.css",
+                       "~/Content/font-awesome.min.css",
+                       "~/Content/dataTables.bootstrap4.css",
+                       "~/Content/admin.css"));
+
+            bundles.Add(new ScriptBundle("~/Admin-DashboardJs").Include(
+                      "~/Scripts/jquery-3.2.1.js",
+                      "~/Scripts/popper.min.js",
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/jquery.easing.min.js",
+                      "~/Scripts/Chart.min.js",
+                      "~/Scripts/jquery.dataTables.js",
+                      "~/Scripts/dataTables.bootstrap4.js",
+                      "~/Scripts/sb-admin.min.js",
+                      "~/Scripts/sb-admin-datatables.min.js",
+                      "~/Scripts/sb-admin-charts.min.js"));
+                      
         }
     }
 }

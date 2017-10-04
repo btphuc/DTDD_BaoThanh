@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<DTDD_BaoThanh.Models.tbl_Products>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "All";
+    Layout = " ~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+
+    <div class="col md-10">
+        <div class="row sort-by">
+            <nav class="nav">
+                <span class="nav-link">Tùy Chọn Xem :</span>
+                <a class="nav-link active" href="#">Active</a>
+                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </nav>
+        </div>
+        <div class="row ds-sp">
+            @foreach (var item in Model)
+            {
+                var url = "/San-pham" + "-" + item.Alias + "-" + item.Id;
+                <div class="col-md-3 col-sm-6 col-xs-12 product-item-box">
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img class="img-responsive" src="~/Content/images/@item.Image" alt="">
+                        </div>
+                    </div>
+
+                    <div class="product-detail">
+                        <h4>@item.Name</h4>
+                        <div class="price">
+                            <span class="new-price text-center">@String.Format("{0:N0}", item.Price) VNĐ</span>
+                        </div>
+                        <div class="box-inner">
+                            <ul class="product-link list-inline">
+                                <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="Thêm Giỏ Hàng" data-trigger="hover">
+                                    <a href="#" onclick=""><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="So Sánh" data-trigger="hover">
+                                    <a href="#"><i class="fa fa-compress fa-2x" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="Chi Tiết" data-trigger="hover">
+                                    <a href="@url"><i class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-12">
+                <div class="justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

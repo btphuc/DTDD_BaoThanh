@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<DTDD_BaoThanh.Models.tbl_Best_Seller>
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -40,27 +42,50 @@
         </div>
     </div>
 
+<div class="row show-product">
+    <div class="col-md-12">
+        <div class="row product-title">
+            <span>TOP HOT</span>
+        </div>
 
+       
+        <!-- danh sách sản phẩm  -->
+        <div class="row ds-sp">
+            @foreach (var item in Model)
+            {
+                var url = "/San-pham" + "-" + item.tbl_Products.Alias + "-" + item.tbl_Products.Id;
+                <div class="col-md-3 col-sm-6 col-xs-12 product-item-box">
+                    <div class="product-item">
+                        <div class="product-img">
+                            <img class="img-responsive" src="~/Content/images/@item.tbl_Products.Image" alt="">
+                        </div>
+                    </div>
 
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                    <div class="product-detail">
+                        <h4>@item.tbl_Products.Name</h4>
+                            <div class="price">
+                                <span class="new-price text-center">@String.Format("{0:N0}",item.tbl_Products.Price) VNĐ</span>
+                            </div>
+                            <div class="box-inner">
+                                <ul class="product-link list-inline">
+                                    <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="Thêm Giỏ Hàng" data-trigger="hover">
+                                        <a href="#" onclick=""><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="So Sánh" data-trigger="hover">
+                                        <a href="#"><i class="fa fa-compress fa-2x" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="Chi Tiết Sản Phẩm" data-trigger="hover">
+                                        <a href="@url"><i class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- danh sách sản phẩm  -->
+        
     </div>
 </div>
+
+@Html.Action("SomeProduct", "Home")
