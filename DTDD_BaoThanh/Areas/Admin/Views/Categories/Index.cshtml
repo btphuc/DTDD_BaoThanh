@@ -4,6 +4,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
+
 <h2>Index</h2>
 
 <p>
@@ -13,7 +15,7 @@
 </p>
 
 @*table dùng để hiển thị danh sách*@
-<table id="listBooks" class="table">
+<table id="listCategory" class="table">
     <thead>
         <tr>
             <th><label>Id</label></th>
@@ -50,7 +52,7 @@
     </div>
 </div>
 
-@*trong ví dụ này chúng ta sẽ viết trực tiếp các hàm xử lý Ajax ngay trong trang Index*@
+@*hàm xử lý Ajax ngay trong trang Index*@
 
 @section Scripts{
 
@@ -73,7 +75,7 @@
                         rows += "<td>" + item.Name + "</td>"
                         rows += "<td><button type='button' id='btnEdit' class='btn btn-default' onclick='return GetCategoryByID(" + item.Id + ")'>Edit</button> <button type='button' id='btnDelete' class='btn btn-danger' onclick='return Delete(" + item.Id + ")'>Delete</button></td>"
                         rows += "</tr>";
-                        $("#listBooks tbody").html(rows);
+                        $("#listCategory tbody").html(rows);
                     });
                 }
 
