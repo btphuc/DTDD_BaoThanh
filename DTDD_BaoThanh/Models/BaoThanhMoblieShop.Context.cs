@@ -31,7 +31,6 @@ namespace DTDD_BaoThanh.Models
         public virtual DbSet<tbl_Admin> tbl_Admin { get; set; }
         public virtual DbSet<tbl_Best_Seller> tbl_Best_Seller { get; set; }
         public virtual DbSet<tbl_Categories> tbl_Categories { get; set; }
-        public virtual DbSet<tbl_Deliverer> tbl_Deliverer { get; set; }
         public virtual DbSet<tbl_Oder_Detail> tbl_Oder_Detail { get; set; }
         public virtual DbSet<tbl_Order> tbl_Order { get; set; }
         public virtual DbSet<tbl_Products> tbl_Products { get; set; }

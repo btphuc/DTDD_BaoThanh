@@ -23,12 +23,10 @@ namespace DTDD_BaoThanh.Models
         public int Id { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StatusId { get; set; }
-        public Nullable<int> DelivererId { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Note { get; set; }
     
-        public virtual tbl_Deliverer tbl_Deliverer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Oder_Detail> tbl_Oder_Detail { get; set; }
         public virtual tbl_Users tbl_Users { get; set; }

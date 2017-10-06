@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <title>Quản Lý - @ViewBag.Title</title>
     
-    <script src="/Scripts/jquery-3.2.1.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
 
     @Styles.Render("~/Admin-DashboardCss")
-    @RenderSection("scripts")
+    @RenderSection("scripts", required: false);
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
@@ -346,11 +346,9 @@
 
             $('#ProductList').DataTable({
                 "columnDefs": [
+                    
                     {
-                        "orderable": false, "targets" :0,
-                    },
-                    {
-                        "orderable": false, "targets": 7,
+                        "orderable": false, "targets": 6,
                     },
                 ],
                 "order": [[2, "asc"]]
@@ -361,6 +359,39 @@
                 .popover({ html: true })
 
         </script>
+
+
+        <script>
+
+            $('.btnIsActive').click( function () {
+
+                var id = $(this).attr("data-id");
+                console.log(id);
+                var UpdateIsActiveUrl = "@Url.Action("UpdateIsAvtive", "Products")";
+                $.post(UpdateIsActiveUrl, { "id": id }, function (data) {
+
+                    console.log("IsActive hiện tại: "+ data);
+
+                    if ($("#btn-" + id).hasClass("btn-primary"))
+                    {
+                        $("#btn-" + id).removeClass("btn-primary");
+                        $("#btn-" + id).addClass("btn-danger");
+                        $("#btn-" + id).text("OFF");
+                    }
+                    else {
+                        $("#btn-" + id).removeClass("btn-danger");
+                        $("#btn-" + id).addClass("btn-primary");
+                        $("#btn-" + id).text("ON");
+
+                    }
+                    
+                });
+
+            });
+
+        </script>
+
+        
     </div>
 </body>
 </html>

@@ -4,7 +4,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-@section Scripts{}
+@section Scripts{ }
+
+
+
 
 <div class="card mb-3">
     <div class="card-header">
@@ -18,13 +21,13 @@
             <table class="table table-bordered" id="ProductList" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        
                         <th>Danh Mục</th>
                         <th>Tên Sản Phẩm</th>
-                        <th>Hình Ảnh</th>
                         <th>Màu Sắc</th>
                         <th>Bảo hành</th>
                         <th>Giá</th>
+                        <th>Tình Trạng</th>
                         <th>Tùy Chọn</th>
                     </tr>
                 </thead>
@@ -33,13 +36,20 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
                             <td>@item.tbl_Categories.Name</td>
                             <td>@item.Name</td>
-                            <td>@item.Image</td>
                             <td>@item.Color</td>
                             <td>@item.Warranty</td>
                             <td>@String.Format("{0:N0}", item.Price)</td>
+                            <td class="text-center" id="IsActive-@item.Id">@if (item.IsActive==true) {
+                                <button class="btn btn-primary btnIsActive" id="btn-@item.Id" data-id="@item.Id" >ON</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger btnIsActive" id="btn-@item.Id"  data-id="@item.Id" >OFF</button>
+                            }
+
+                            </td>
                             <td>
                                 <a href="~/Admin/Products/Edit/@item.Id" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 <span data-toggle="tooltip" data-placement="top" title="Detail" >
@@ -68,13 +78,14 @@
                                                             <img style="margin-left:50px" src="~/Content/images/@item.Image" class="img-thumbnail">
                                                         </div>
                                                         <div class="col-md-6 ml-auto mr-auto">
-                                                            <h5 class="text-center" style="margin-top:32px">
+                                                            <h5 class="text-center">
                                                                 @item.Name
                                                             </h5>
                                                             <p class="text-muted text-center">@item.Alias</p>
                                                             
                                                             <p class="text-center" style="color: #429a9d; font-size: 22px;">@String.Format("{0:N0}", item.Price) VND</p>
-                                                            <p class="text-center">Số lượng : <strong>@item.Quantity</strong></p>
+                                                            <p class="text-center">Số lượng : <strong>@item.Quantity</strong>  Views : <strong>@item.Views</strong></p>
+                                                            <p class="text-center">Ngày Cập Nhật : @String.Format("{0:d/M/yyyy HH:mm}", item.LastUpdate)</p>
                                                             <p class="text-center">Màu : <strong>@item.Color</strong></p>
                                                         </div>
                                                     </div>

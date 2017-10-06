@@ -73,6 +73,9 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 tbl_Products.Alias = convertToUnSign2(tbl_Products.Name).Replace(" ", "-").Replace(",", "-");
+                tbl_Products.Views = 0;
+                tbl_Products.LastUpdate = DateTime.Now;
+                tbl_Products.IsActive = true;
                 db.tbl_Products.Add(tbl_Products);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -103,11 +106,13 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryID,Name,Alias,Detail,Quantity,Image,Size,Weight,Color,Memory,Os,Cpu,Camera,Warranty,Price")] tbl_Products tbl_Products)
+        public ActionResult Edit([Bind(Include = "Id,CategoryID,Name,Alias,Detail,Quantity,Image,Size,Weight,Color,Memory,Os,Cpu,Camera,Warranty,Price,Views,LastUpdate,IsActive")] tbl_Products tbl_Products)
         {
             if (ModelState.IsValid)
             {
+                
                 tbl_Products.Alias = convertToUnSign2(tbl_Products.Name).Replace(" ", "-").Replace(",", "-");
+                tbl_Products.LastUpdate = DateTime.Now;
                 db.Entry(tbl_Products).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -140,6 +145,33 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
             db.tbl_Products.Remove(tbl_Products);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public void UpdateIsAvtive (int id)
+        {
+            var product = db.tbl_Products.Find(id);
+            
+            if (product.IsActive == true)
+            {
+                product.IsActive = false;
+            }
+            else
+            {
+                product.IsActive = true;
+            }
+
+            
+
+            db.Entry(product).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+
+            Response.Write(product.IsActive);
+           
+
         }
 
         protected override void Dispose(bool disposing)

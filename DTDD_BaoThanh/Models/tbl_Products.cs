@@ -37,6 +37,9 @@ namespace DTDD_BaoThanh.Models
         public string Camera { get; set; }
         public string Warranty { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public Nullable<int> Views { get; set; }
+        public Nullable<System.DateTime> LastUpdate { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Best_Seller> tbl_Best_Seller { get; set; }

@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -206,9 +207,6 @@
     <Compile Include="Models\tbl_Categories.cs">
       <DependentUpon>BaoThanhMoblieShop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbl_Deliverer.cs">
-      <DependentUpon>BaoThanhMoblieShop.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbl_Oder_Detail.cs">
       <DependentUpon>BaoThanhMoblieShop.tt</DependentUpon>
     </Compile>
@@ -237,6 +235,7 @@
     <Content Include="Content\images\htc-sample.jpg" />
     <Content Include="Content\images\iphone-sample.jpg" />
     <Content Include="Content\images\lg-sample.jpg" />
+    <Content Include="Content\images\nokia-sample.jpg" />
     <Content Include="Content\images\oppo-sample.jpg" />
     <Content Include="Content\images\samsung-sample.jpg" />
     <Content Include="Content\images\sony-sample.jpg" />
