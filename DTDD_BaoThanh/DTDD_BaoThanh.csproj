@@ -333,6 +333,8 @@
     <Content Include="Views\Home\_pAccount.cshtml" />
     <Content Include="Views\Home\_pLogin.cshtml" />
     <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Home\_pUserUpdate.cshtml" />
+    <Content Include="Views\Home\_pChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

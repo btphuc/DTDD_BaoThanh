@@ -5,63 +5,87 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Account</h2>
-
-<div>
-    <h4>tbl_Users</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-    </dl>
+<div class="row show-product">
+    <div class="col-md-12">
+        <div class="row product-title">
+            <span class="ml-auto mr-auto">TÀI KHOẢN</span>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row mb-4">
+
+    <div class="col-md-3 mb-4"  style="border-right: solid 2px #E0E0E0; flex:1;">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Tổng quan</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Thay đổi thông tin</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Đổi mật khẩu</a>
+        </div>
+    </div>
+
+    <div class="col-md-8 ml-auto" style="flex:1">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="card" style="margin-bottom:30px">
+                    <div class="card-header">
+                        Chi tiết tài khoản
+                    </div>
+                    <div class="card-body">
+                        <table class="table" style="margin-top:20px; margin-right:20px;">
+                            <tr>
+                                <th>Họ Tên </th>
+                                <th>
+                                   @Model.Name
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <th>
+                                    @Model.Email
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>Số điện thoại</th>
+                                <th>
+                                    @Model.Phone
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>Địa chỉ</th>
+                                <th>
+                                    @Model.Address
+                                </th>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="card" style="margin-bottom:30px">
+                    <div class="card-header">
+                        Nhập thay đổi thông tin
+                    </div>
+                    <div class="card-body">
+                        @Html.Partial("_pUserUpdate")
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="card" style="margin-bottom:30px">
+                    <div class="card-header">
+                        Thay đổi mật khẩu
+                    </div>
+                    <div class="card-body">
+                        @Html.Partial("_pChangePassword")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

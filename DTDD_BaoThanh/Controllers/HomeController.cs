@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DTDD_BaoThanh.Models;
 using PagedList;
+using System.Data.Entity;
 
 namespace DTDD_BaoThanh.Controllers
 {
@@ -74,6 +75,10 @@ namespace DTDD_BaoThanh.Controllers
         [HttpPost]
         public ActionResult Register(tbl_Users user)
         {
+            if (Session["TaiKhoan"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var tk = db.tbl_Users.Where(p => p.Username == user.Username).ToList();
             var ht = db.tbl_Users.Where(p => p.Email == user.Email).ToList();
 
@@ -119,7 +124,7 @@ namespace DTDD_BaoThanh.Controllers
                 return Content("<script>alert('Chúc mừng bạn đã đăng nhập thành công!');window.location='/Home/Index';</script>");
             }
             ViewBag.ThongBao = "Tài khoản hoặc mật khẩu không đúng";
-            return PartialView();
+            return Content("<script>alert('Tài khoản hoặc mật khẩu không đúng');window.location='/Home/Register';</script>");
         }
 
         #endregion
@@ -141,14 +146,122 @@ namespace DTDD_BaoThanh.Controllers
 
         public ActionResult Account()
         {
-            if (Session["Username"] == null)
-                return RedirectToAction("Index");
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Register");
 
             int id = int.Parse(Session["TaiKhoanID"].ToString());
             var thongtin = db.tbl_Users.SingleOrDefault(k => k.Id == id);
             return View(thongtin);
         }
+        //thay doi thong tin
+        public ActionResult _pUserUpdate()
+        {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Register");
 
+            int id = int.Parse(Session["TaiKhoanID"].ToString());
+            var thongtin = db.tbl_Users.SingleOrDefault(k => k.Id == id);
+
+            return PartialView(thongtin);
+        }
+
+        [HttpPost]
+        public ActionResult _pUserUpdate(FormCollection f)
+        {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Register");
+
+
+            int id = int.Parse(Session["TaiKhoanID"].ToString());
+            var user = db.tbl_Users.SingleOrDefault(k => k.Id == id);
+
+            if(user == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                var newName = f["Name"];
+                var newEmail = f["Email"];
+                var newPhone = f["Phone"];
+                var newAddress = f["Address"];
+
+                user.Name = newName;
+                user.Email = newEmail;
+                user.Phone = newPhone;
+                user.Address = newAddress;
+
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return Content("<script>alert('Thay đổi thành công!');window.location='/Home/Account';</script>");
+            }
+            catch 
+            {
+                // có lỗi tải lại trang và vào tab thay doi thong tin
+                return Content("<script>alert('Lỗi!');window.location='/Home/Account#v-pills-profile';</script>");
+            }
+        }
+
+
+        //doi password
+        public ActionResult _pChangePassword()
+        {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Register");
+
+            int id = int.Parse(Session["TaiKhoanID"].ToString());
+            var thongtin = db.tbl_Users.SingleOrDefault(k => k.Id == id);
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult _pChangePassword(FormCollection f)
+        {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Register");
+
+            int id = int.Parse(Session["TaiKhoanID"].ToString());
+            var user = db.tbl_Users.SingleOrDefault(k => k.Id == id);
+
+            if (user == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                var oldPassword = f["Password"];
+                var newPassword = f["NewPassword"];
+                var confirmPassword = f["ConfirmPassword"];
+               
+                if (oldPassword != user.Password)
+                {
+                    return Content("<script>alert('Mật khẩu không chính xác');</script>");
+                }
+                if(newPassword != confirmPassword)
+                {
+                    return Content("<script>alert('Xác nhận mật khẩu không chính xác');</script>");
+                }
+
+                user.Password = newPassword;
+
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return Content("<script>alert('Thay đổi thành công!');window.location='/Home/Account';</script>");
+            }
+            catch
+            {
+                // có lỗi tải lại trang và vào tab thay doi thong tin
+                return Content("<script>alert('Lỗi!');window.location='/Home/Account#v-pills-profile';</script>");
+            }
+
+
+            return PartialView();
+        }
 
         #endregion
 
