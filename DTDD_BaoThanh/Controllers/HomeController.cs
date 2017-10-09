@@ -52,6 +52,109 @@ namespace DTDD_BaoThanh.Controllers
         }
 
 
+        #region Đăng nhập - đăng ký - Tài khoản v.v.
+
+        public PartialViewResult _pAccount()
+        {
+            return PartialView();
+        }
+
+        #region ĐĂNG KÝ
+        // Get:  Đăng Ky
+        
+        public ActionResult Register()
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(tbl_Users user)
+        {
+            var tk = db.tbl_Users.Where(p => p.Username == user.Username).ToList();
+            var ht = db.tbl_Users.Where(p => p.Email == user.Email).ToList();
+
+            if (tk.Count > 0)
+            {
+                ViewBag.ThongBaotk = "Tên đăng nhập đã được sử dụng";
+                return View();
+            }
+            if (ht.Count > 0)
+            {
+                ViewBag.ThongBaoMail = "Email đã được sử dụng";
+                return View();
+            }
+            db.tbl_Users.Add(user);
+            db.SaveChanges();
+            //ViewBag.DangKyThanhCong = "Bạn Đã đăng ký thành công , mời bạn đăng nhập";
+            return Content("<script>alert('Bạn Đã đăng ký thành công , mời bạn đăng nhập!');window.location='/Home/Register';</script>");
+        }
+
+        #endregion
+
+        #region ĐĂNG NHẬP
+        public ActionResult _pLogin()
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult _pLogin(FormCollection f)
+        {
+            string username = f["Username"];
+            string password = f["Password"];
+            tbl_Users user = db.tbl_Users.SingleOrDefault(n => n.Username == username && n.Password == password);
+            if (user != null)
+            {
+
+                Session["TaiKhoan"] = user.Name;
+                Session["TaiKhoanID"] = user.Id;
+                return Content("<script>alert('Chúc mừng bạn đã đăng nhập thành công!');window.location='/Home/Index';</script>");
+            }
+            ViewBag.ThongBao = "Tài khoản hoặc mật khẩu không đúng";
+            return PartialView();
+        }
+
+        #endregion
+
+
+        #region ĐĂNG XUẤT
+
+        public ActionResult DESTROYSESCION ()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        #endregion
+
+        #region QUẢN LÝ TÀI KHOẢN
+
+        // Trang người dùng :
+
+        public ActionResult Account()
+        {
+            if (Session["Username"] == null)
+                return RedirectToAction("Index");
+
+            int id = int.Parse(Session["TaiKhoanID"].ToString());
+            var thongtin = db.tbl_Users.SingleOrDefault(k => k.Id == id);
+            return View(thongtin);
+        }
+
+
+        #endregion
+
+        #endregion
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

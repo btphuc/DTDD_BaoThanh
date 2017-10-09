@@ -56,7 +56,7 @@
             }
             <div class="col-md-12">
                 <div class="justify-content-center">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
                 </div>
             </div>
         </div>

@@ -1,0 +1,115 @@
+﻿@model DTDD_BaoThanh.Models.tbl_Users
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row show-product">
+    <div class="col-md-5 ml-auto mr-auto">
+        <div class="row product-title">
+            <span class="ml-auto mr-auto">ĐĂNG KÝ</span>
+        </div>
+        <div class="row ds-sp">
+            <div class="container mt-4">
+                @using (Html.BeginForm("Register", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="text-danger">
+                                @ViewBag.ThongBaotk
+                                @ViewBag.ThongBaoMail
+                                @ViewBag.DangKyThanhCong
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            @Html.Label("Username", htmlAttributes: new { @class = "control-label col-md-3 mt-auto" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" , @required = "required" , @maxlength = "30" , @pattern = "[A-Za-z0-9]{6,30}", @title = "Tên đăng nhập tối thiểu có 6 ký tự và không được nhập ký tự đặc biệt !" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            @Html.Label("Mật Khẩu", htmlAttributes: new { @class = "control-label col-md-3 mt-auto" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @pattern = "[A-Za-z0-9]{6,30}", @title = "Mật khẩu của bạn tối thiểu có 6 ký tự và không được nhập ký tự đặc biệt !" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-row">
+                                @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-3 mt-auto", @type="email" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "ex: btphuc@gmail.com" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-row">
+                                @Html.Label("Họ tên", htmlAttributes: new { @class = "control-label col-md-3 mt-auto" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-row">
+                                @Html.Label("Điện thoại", htmlAttributes: new { @class = "control-label col-md-3 mt-auto"  })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-row">
+                                @Html.Label("Địa chỉ", htmlAttributes: new { @class = "control-label col-md-3 mt-auto" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Đăng Ký" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 ml-auto mr-auto">
+        <div class="row product-title">
+            <span class="ml-auto mr-auto">ĐĂNG NHẬP</span>
+        </div>
+        <div class="row ds-sp">
+           @Html.Partial("_pLogin")
+        </div>
+
+    </div>
+</div>
