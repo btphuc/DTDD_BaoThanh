@@ -51,8 +51,7 @@ namespace DTDD_BaoThanh.Controllers
             
             return View(product);
         }
-
-
+        
         #region Đăng nhập - đăng ký - Tài khoản v.v.
 
         public PartialViewResult _pAccount()
@@ -79,6 +78,7 @@ namespace DTDD_BaoThanh.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var tk = db.tbl_Users.Where(p => p.Username == user.Username).ToList();
             var ht = db.tbl_Users.Where(p => p.Email == user.Email).ToList();
 

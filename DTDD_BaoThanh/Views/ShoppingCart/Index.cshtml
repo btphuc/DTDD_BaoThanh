@@ -1,0 +1,34 @@
+﻿@using DTDD_BaoThanh.Models
+@model List<ShoppingCart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Giỏ hàng</h2>
+
+
+<table class="table" align="center">
+    <tr>
+        <td>Mã sản phẩm</td>
+        <td>Tên sản phẩm</td>
+        <td>Hình ảnh</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td><img src="~/Content/images/@item.ProductImage" alt="Alternate Text" style="height:50px; width: 50px;"/></td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+            <td>@item.TotalPrice</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="6" align="right">TỔNG TIỀN : <strong>@ViewBag.totalprice</strong></td>
+    </tr>
+</table>

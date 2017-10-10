@@ -64,7 +64,7 @@ body {
 }
 
 .carousel-item img {
-    max-height: 390px
+    max-height: 400px
 }
 
 .product-title {
@@ -211,3 +211,8 @@ footer {
        color: #007ff0;
        border-bottom: solid 1px #007ff0;
    }
+
+
+.shopping-cart:hover{
+    text-decoration: none;
+}

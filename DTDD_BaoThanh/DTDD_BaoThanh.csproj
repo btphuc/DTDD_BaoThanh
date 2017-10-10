@@ -171,6 +171,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaoThanhMoblieShop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>BaoThanhMoblieShop.tt</DependentUpon>
     </Compile>
@@ -337,6 +339,7 @@
     <Content Include="Views\Home\Account.cshtml" />
     <Content Include="Views\Home\_pUserUpdate.cshtml" />
     <Content Include="Views\Home\_pChangePassword.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

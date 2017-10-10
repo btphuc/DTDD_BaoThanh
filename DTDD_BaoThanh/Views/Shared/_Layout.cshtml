@@ -1,4 +1,4 @@
-﻿
+﻿@using DTDD_BaoThanh.Models
 <!DOCTYPE html>
 <html lang="vn">
 <head>
@@ -57,7 +57,17 @@
                     <div class="col-md-3">
                         <div class="container" style="margin-top:20px;">
                             <div class="row">
-                                <img src="~/Content/images/shoppingcart.png" alt="Alternate Text" class="m-auto" style="height:100px; width:100px;" />
+                                <a href="@Url.Action("Index","ShoppingCart")" class="shopping-cart">
+                                    <img src="~/Content/images/shoppingcart.png" alt="Alternate Text" class="m-auto" style="height:100px; width:100px;" />
+                                    @{ 
+                                        List<ShoppingCart> sp = Session["ShoppingCart"] as List<ShoppingCart>;
+                                    }
+                                   
+                                    @if (sp != null)
+                                    {
+                                        <span class="badge badge-pill badge-success">@sp.Count()</span>
+                                    }
+                                </a>
                             </div>
                         </div>
                     </div>
