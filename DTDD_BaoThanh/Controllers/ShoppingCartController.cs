@@ -23,15 +23,21 @@ namespace DTDD_BaoThanh.Controllers
             return sp;
         }
 
-
-        public ActionResult AddShoppingCart(int Id, int q, string strURL)
+        [HttpPost]
+        public ActionResult AddShoppingCart(int Id, string strURL, FormCollection f)
         {
+            int soluong = int.Parse(f["InputQuantity"]);
+            if (soluong == 0)
+            {
+                soluong = 1;
+            }
             List<ShoppingCart> sp = GetCart();
             //kiem tra tồn tại session 
             ShoppingCart item = sp.Find(n => n.ProductId == Id);
             if (item == null)
             {
-                item = new ShoppingCart(Id, q);
+                item = new ShoppingCart(Id, soluong);
+                sp.Add(item);
                 return Redirect(strURL);
             }
             else
@@ -41,6 +47,32 @@ namespace DTDD_BaoThanh.Controllers
             }
         }
 
+        public ActionResult AddShoppingCart(int Id, string strURL)
+        {
+            List<ShoppingCart> sp = GetCart();
+            //kiem tra tồn tại session 
+            ShoppingCart item = sp.Find(n => n.ProductId == Id);
+            if (item == null)
+            {
+                item = new ShoppingCart(Id, 1);
+                sp.Add(item);
+                return Redirect(strURL);
+            }
+            else
+            {
+                item.Quantity++;
+                return Redirect(strURL);
+            }
+        }
+
+        public ActionResult DeleteCart()
+        {
+            List<ShoppingCart> sp = new List<ShoppingCart>();
+
+            Session["ShoppingCart"] = sp;
+            
+            return RedirectToAction("Index", "Home");
+        }
 
         private Decimal TotalPrice()
         {

@@ -29,7 +29,7 @@ namespace DTDD_BaoThanh.Models
         public ShoppingCart(int Id, int q)
         {
             ProductId = Id;
-            tbl_Products product = db.tbl_Products.SingleOrDefault(x => x.Id == Id);
+            tbl_Products product = db.tbl_Products.Find(Id);
 
             ProductName = product.Name;
 

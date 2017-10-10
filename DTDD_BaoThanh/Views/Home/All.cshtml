@@ -41,7 +41,7 @@
                         <div class="box-inner">
                             <ul class="product-link list-inline">
                                 <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="Thêm Giỏ Hàng" data-trigger="hover">
-                                    <a href="#" onclick=""><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+                                    <a href="@Url.Action("AddShoppingCart","ShoppingCart",new { @Id = @item.Id , @strURL = @Request.Url.ToString() })" onclick=""><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="list-inline-item" data-toggle="popover" data-placement="top" data-content="So Sánh" data-trigger="hover">
                                     <a href="#"><i class="fa fa-compress fa-2x" aria-hidden="true"></i></a>

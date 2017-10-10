@@ -5,30 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Giỏ hàng</h2>
+<div class="row">
+    <div class="container">
+        <h2 class="text-success">GIỎ HÀNG</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container">
+        <table class="table text-center ">
+            <tr>
+                <td>Mã sản phẩm</td>
+                <td>Tên sản phẩm</td>
+                <td>Hình ảnh</td>
+                <td>Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr >
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td><img src="~/Content/images/@item.ProductImage" alt="Alternate Text" style="height:60px; width: 60px;" /></td>
+                    <td>@item.Quantity</td>
+                    <td>@String.Format("{0:N0}", item.Price)</td>
+                    <td>@String.Format("{0:N0}", item.TotalPrice)</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>TỔNG TIỀN :</td>
+                <td><strong>@String.Format("{0:N0}", ViewBag.totalprice)</strong></td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 
-<table class="table" align="center">
-    <tr>
-        <td>Mã sản phẩm</td>
-        <td>Tên sản phẩm</td>
-        <td>Hình ảnh</td>
-        <td>Số lượng</td>
-        <td>Đơn giá</td>
-        <td>Thành tiền</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.ProductId</td>
-            <td>@item.ProductName</td>
-            <td><img src="~/Content/images/@item.ProductImage" alt="Alternate Text" style="height:50px; width: 50px;"/></td>
-            <td>@item.Quantity</td>
-            <td>@item.Price</td>
-            <td>@item.TotalPrice</td>
-        </tr>
-    }
-    <tr>
-        <td colspan="6" align="right">TỔNG TIỀN : <strong>@ViewBag.totalprice</strong></td>
-    </tr>
-</table>
+<div class="row mb-4">
+        <a href="@Url.Action("DeleteCart","ShoppingCart")" class="btn btn-danger ml-auto" style="margin-right: 35px">Xóa đơn hàng</a>
+        <a href="#" class="btn btn-success" style="margin-right: 35px;">Xác Nhận Đơn Hàng</a>
+    
+</div>

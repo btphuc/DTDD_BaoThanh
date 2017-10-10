@@ -48,7 +48,13 @@ namespace DTDD_BaoThanh.Controllers
         public ActionResult ChiTietSP(int id)
         {
             var product = db.tbl_Products.Find(id);
-            
+
+            product.Views++;
+
+            db.Entry(product).State = EntityState.Modified;
+
+            db.SaveChanges();
+
             return View(product);
         }
         
