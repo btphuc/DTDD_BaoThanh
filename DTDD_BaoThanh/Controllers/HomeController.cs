@@ -259,8 +259,6 @@ namespace DTDD_BaoThanh.Controllers
                 return Content("<script>alert('Lỗi!');window.location='/Home/Account#v-pills-profile';</script>");
             }
 
-
-            return PartialView();
         }
 
         #endregion

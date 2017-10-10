@@ -235,9 +235,11 @@
     <Content Include="Content\images\htc-sample.jpg" />
     <Content Include="Content\images\iphone-sample.jpg" />
     <Content Include="Content\images\lg-sample.jpg" />
+    <Content Include="Content\images\Logo.png" />
     <Content Include="Content\images\nokia-sample.jpg" />
     <Content Include="Content\images\oppo-sample.jpg" />
     <Content Include="Content\images\samsung-sample.jpg" />
+    <Content Include="Content\images\shoppingcart.png" />
     <Content Include="Content\images\sony-sample.jpg" />
     <Content Include="Content\images\xiaomi-sample.jpg" />
     <Content Include="Content\admin.css" />

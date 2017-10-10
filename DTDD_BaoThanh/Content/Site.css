@@ -9,7 +9,7 @@ body {
 }
 
 .top-link {
-    background-color: #333;
+    background-color: #534bae;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -17,11 +17,11 @@ body {
 }
 
     .navbar-light .navbar-nav .nav-link:hover {
-        color: #429a9d
+        color: rgba(255,255,255,.75);
     }
 
 .search {
-    background-color: #262626;
+    background-color: #000051;
     height: 150px;
 }
 
@@ -34,18 +34,18 @@ body {
     }
 
 .search button {
-    color: #429a9d;
-    border-color: #429a9d;
+    color: white;
+    border-color: white;
 }
 
     .search button:hover {
-        color: white;
-        background-color: #429a9d
+        color: rgba(255,255,255,.75);
+        background-color: rgba(255,255,255,.75)
     }
 
 .main-menu {
     height: 50px;
-    background-color: #333;
+    background-color: #534bae;
     margin-bottom: 20px;
     padding-top: 5px;
 }
@@ -132,7 +132,7 @@ body {
 .product-link li {
     height: 60px;
     width: 60px;
-    background-color: grey;
+    background-color: #000051;
     padding-top: 15px;
 }
 
@@ -149,7 +149,7 @@ body {
 }
 
 footer {
-    background-color: #333;
+    background-color: #534bae;
     padding: 70px;
     color: white;
 }
@@ -169,7 +169,7 @@ footer {
             }
 
                 footer ul li a:hover {
-                    color: #429a9d;
+                    color: rgba(255,255,255,.75);
                     text-decoration: none;
                     -webkit-transition: all 0.3s ease-in-out;
                     -moz-transition: all 0.3s ease-in-out;
@@ -186,7 +186,7 @@ footer {
     height: 40px;
     width: 40px;
     color: white;
-    background-color: #429a9d;
+    background-color: #1a237e;
 }
 
     .back-to-top i {
@@ -195,7 +195,7 @@ footer {
     }
 
     .back-to-top a:hover {
-        color:white;
+        color: rgba(255,255,255,.75);
     }
 
 
