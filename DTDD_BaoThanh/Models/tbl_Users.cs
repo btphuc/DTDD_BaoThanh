@@ -30,6 +30,5 @@ namespace DTDD_BaoThanh.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Order> tbl_Order { get; set; }
-        public bool IsActive { get; internal set; }
     }
 }

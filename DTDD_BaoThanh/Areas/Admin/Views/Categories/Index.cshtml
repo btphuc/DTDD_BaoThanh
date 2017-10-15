@@ -5,52 +5,58 @@
 }
 
 
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Danh mục Sản Phẩm
+        <button type="button" onclick="return BtnCreateNewOnClick()" id="btnCreateNew" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal" style="float:right;">
+            Create New
+        </button>
+    </div>
+    <div class="card-body">
+        @*table dùng để hiển thị danh sách*@
+        <div class="table-responsive">
+            <table id="listCategory" class="table">
+                <thead>
+                    <tr>
+                        <th><label>Id</label></th>
+                        <th><label>Name</label></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-<h2>Index</h2>
 
-<p>
-    <button type="button" onclick="return BtnCreateNewOnClick()" id="btnCreateNew" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
-        Create New
-    </button>
-</p>
-
-@*table dùng để hiển thị danh sách*@
-<table id="listCategory" class="table">
-    <thead>
-        <tr>
-            <th><label>Id</label></th>
-            <th><label>Name</label></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-
-@*modal dùng để hiển thị form Create và Update*@
-<div class="modal fade" id="categoryModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><label id="title"></label></h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <input type="hidden" class="form-control" id="Id" />
-                            <label>Name</label>
-                            <input type="text" id="Name" class="form-control" />
+        @*modal dùng để hiển thị form Create và Update*@
+        <div class="modal fade" id="categoryModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><label id="title"></label></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="hidden" class="form-control" id="Id" />
+                                    <label>Name</label>
+                                    <input type="text" id="Name" class="form-control" />
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnSave" onclick="return BtnSaveOnClick()" class="btn btn-primary">Save</button>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="btnSave" onclick="return BtnSaveOnClick()" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </div>
+
+
 
 @*hàm xử lý Ajax ngay trong trang Index*@
 

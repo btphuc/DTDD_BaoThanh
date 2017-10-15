@@ -1,8 +1,129 @@
-﻿
+﻿@using DTDD_BaoThanh.Models
+@model IEnumerable<DTDD_BaoThanh.Models.tbl_Order>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Dành cho đơn đặt hàng, sơ đồ biểu đồ blah blah blah</h2>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Danh Sách Sản Phẩm
+        <a href="~/Admin/Products/Create" style="float:right;">
+            Create <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="ProductList" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+
+                        <th>Id phiếu</th>
+                        <th>Tên khách hàng</th>
+                        <th>Thành tiền</th>
+                        <th>Ngày Lập Phiếu</th>
+                        <th>Tình Trạng</th>
+                        <th>Tùy Chọn</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.tbl_Users.Name</td>
+                            <td>@String.Format("{0:N0}", item.TotalPrice)</td>
+                            <td>@String.Format("{0:d}",item.CreateDate)</td>
+                            <td>@item.tbt_Status.Status</td>
+                        <td>
+                            <span data-toggle="tooltip" data-placement="top" title="Detail">
+                                <a href="#" data-toggle="modal" data-target="#OrderDetail-@item.Id">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="#" data-toggle="modal" data-target="#ProductDeleteByID-@item.Id"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </span>
+
+                            @*modal for detail*@
+                            <div id="OrderDetail-@item.Id" class="modal fade bd-example-modal-lg" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Chi Tiết Đơn hàng</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                
+                                                <table style="margin-top:20px; margin-right:20px;">
+                                                  @{ 
+                                                      MobileShopEntities db = new MobileShopEntities();
+                                                      var detail = db.tbl_Oder_Detail.Where(x => x.OrderId == item.Id).ToList();
+
+                                                  }
+                                                    <tr>
+                                                        <td>Mã sản phẩm</td>
+                                                        <td>Tên sản phẩm</td>
+                                                        <td>Hình ảnh</td>
+                                                        <td>Số lượng</td>
+                                                        <td>Đơn giá</td>
+                                                        <td>Thành tiền</td>
+                                                    </tr>
+                                                    @foreach (var product in detail)
+                                                    {
+                                                        <tr>
+                                                            <td>@product.ProductID</td>
+                                                            <td>@product.tbl_Products.Name</td>
+                                                            <td><img src="~/Content/images/@product.tbl_Products.Image" alt="Alternate Text" style="height:60px; width: 60px;" /></td>
+                                                            <td>@product.Quantity</td>
+                                                            <td>@String.Format("{0:N0}", product.Price)</td>
+                                                            <td>@String.Format("{0:N0}", product.Price * product.Quantity)</td>
+                                                        </tr>
+                                                    }                                                     
+                                                               
+                                                                
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*modal for delete*@
+                            <div id="ProductDeleteByID-@item.Id" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Xóa Sản Phẩm</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-info">Bạn có chắc muốn xóa Sản Phẩm này ?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-primary" disabled>Xóa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 

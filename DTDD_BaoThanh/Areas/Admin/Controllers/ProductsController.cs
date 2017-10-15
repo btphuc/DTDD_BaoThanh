@@ -37,6 +37,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Products
         public ActionResult Index()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             var tbl_Products = db.tbl_Products.Include(t => t.tbl_Categories);
             return View(tbl_Products.ToList());
         }
@@ -44,6 +48,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Products/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -59,6 +67,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public ActionResult Create()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             ViewBag.CategoryID = new SelectList(db.tbl_Categories, "Id", "Name");
             return View();
         }
@@ -88,6 +100,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Products/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +140,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Products/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

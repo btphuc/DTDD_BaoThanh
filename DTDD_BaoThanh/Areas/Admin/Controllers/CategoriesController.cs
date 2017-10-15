@@ -17,6 +17,10 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
         // GET: Admin/Categories
         public ActionResult Index()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Dashboard");
+            }
             return View();
         }
 
