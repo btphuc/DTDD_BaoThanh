@@ -57,7 +57,31 @@ namespace DTDD_BaoThanh.Controllers
 
             return View(product);
         }
-        
+
+        // xem theo danh mục
+        public ActionResult OrderByCategory (int id , int page = 1, int pagesize =12)
+        {
+            var product = db.tbl_Products.OrderBy(x => x.Name).Where(x => x.CategoryID == id).ToPagedList(page, pagesize);
+
+            return View(product);
+        }
+
+        // xem theo giá tăng dần 
+
+        public ActionResult PriceLowToHigh (int page = 1, int pagesize = 12)
+        {
+            var product = db.tbl_Products.OrderBy(x=> x.Price).ToPagedList(page, pagesize);
+            return View(product);
+        }
+
+        // xem theo giá giảm dần 
+
+        public ActionResult PriceHighToLow(int page = 1, int pagesize = 12)
+        {
+            var product = db.tbl_Products.OrderByDescending(x => x.Price).ToPagedList(page, pagesize);
+            return View(product);
+        }
+
         #region Đăng nhập - đăng ký - Tài khoản v.v.
 
         public PartialViewResult _pAccount()

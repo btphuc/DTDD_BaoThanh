@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DTDD_BaoThanh.Models;
+using System.Data.Entity;
 
 namespace DTDD_BaoThanh.Areas.Admin.Controllers
 {
@@ -18,8 +19,43 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
                 return RedirectToAction("Login", "Dashboard");
             }
 
-            var orderList = db.tbl_Order.Where(x => x.StatusId == 1).OrderByDescending(x => x.CreateDate).ToList();
+            var orderList = db.tbl_Order.OrderByDescending(x => x.CreateDate).ToList();
             return View(orderList);
+        }
+
+        public ActionResult DeleteOrder(int id)
+        {
+            var orderdetail = db.tbl_Oder_Detail.Where(x => x.OrderId == id).ToList();
+            foreach(var product in orderdetail)
+            {
+                db.tbl_Oder_Detail.Remove(product);
+            }
+            var order = db.tbl_Order.Find(id);
+            db.tbl_Order.Remove(order);
+
+            db.SaveChanges();
+
+            return Content("<script>alert('Xóa đơn hàng thành công');window.location='/Admin/Dashboard/';</script>");
+        }
+
+        public ActionResult ChangeStatus (int id, FormCollection f)
+        {
+
+            try
+            {
+                var order = db.tbl_Order.Find(id);
+                var status = int.Parse(f["status"]);
+                order.StatusId = status;
+
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch
+            {
+                return Content("<script>alert('Lỗi');window.location='/Admin/Dashboard/';</script>");
+            }
+
+            return Content("<script>alert('Chỉnh sửa trạng thánh thành công');window.location='/Admin/Dashboard/';</script>");
         }
 
         public ActionResult _pStoreDetail()

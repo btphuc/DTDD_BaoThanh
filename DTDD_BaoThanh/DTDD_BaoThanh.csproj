@@ -346,6 +346,9 @@
     <Content Include="Views\Home\_pUserUpdate.cshtml" />
     <Content Include="Views\Home\_pChangePassword.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Home\PriceLowToHigh.cshtml" />
+    <Content Include="Views\Home\PriceHighToLow.cshtml" />
+    <Content Include="Views\Home\OrderByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "All";
+    ViewBag.Title = "Giá giảm dần";
     Layout = " ~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +17,7 @@
             <nav class="nav">
                 <span class="nav-link">Tùy Chọn Xem :</span>
                 <a class="nav-link" href="@Url.Action("PriceLowToHigh","Home")">Giá tăng dần</a>
-                <a class="nav-link" href="@Url.Action("PriceHighToLow","Home")">Giá giảm dần</a>
+                <a class="nav-link active" href="@Url.Action("PriceHighToLow","Home")">Giá giảm dần</a>
             </nav>
         </div>
         <div class="row ds-sp">
