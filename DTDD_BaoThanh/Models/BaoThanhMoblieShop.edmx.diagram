@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="MobileShopModel.tbl_Categories" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileShopModel.tbl_Oder_Detail" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileShopModel.tbl_Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileShopModel.tbl_Products" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileShopModel.tbl_Products" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileShopModel.tbl_Users" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileShopModel.tbt_Status" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
         <AssociationConnector Association="MobileShopModel.FK_tbl_Best_Seller_tbl_Products" ManuallyRouted="false" />

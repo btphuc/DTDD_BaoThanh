@@ -153,7 +153,11 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tbl_Products);
+            
+            db.tbl_Products.Remove(tbl_Products);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/Products/Delete/5
