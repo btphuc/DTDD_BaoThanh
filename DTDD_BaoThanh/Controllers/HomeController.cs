@@ -296,6 +296,25 @@ namespace DTDD_BaoThanh.Controllers
         #endregion
 
 
+        [HttpPost]
+        public ActionResult TimTheoGia (FormCollection f , int page = 1, int pagesize = 12)
+        {
+            decimal giathap = decimal.Parse( f["GiaThap"]);
+            decimal giacao = decimal.Parse(f["GiaCao"]);
+
+
+            if (giathap > giacao)
+            {
+                var temp = giathap;
+                giathap = giacao;
+                giacao = temp;
+            }
+
+            var kq = db.tbl_Products.OrderBy(x => x.Price).Where(x => x.Price >= giathap && x.Price <= giacao).ToPagedList(page, pagesize);
+
+            return View(kq);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
