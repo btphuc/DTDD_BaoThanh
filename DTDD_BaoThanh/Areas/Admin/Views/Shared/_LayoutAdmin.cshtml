@@ -236,7 +236,7 @@
 
         <script>
 
-            $('.btnIsActive').click( function () {
+            $('.btnIsActive').click(function () {
 
                 var id = $(this).attr("data-id");
                 console.log(id);
@@ -257,7 +257,33 @@
                         $("#btn-" + id).text("ON");
 
                     }
-                    
+
+                });
+
+            });
+
+            $('.btnNoiBat').click( function () {
+
+                var id = $(this).attr("data-id");
+                console.log(id);
+                var UpdateIsActiveUrl = "@Url.Action("UpdateNoiBat", "Products")";
+                $.post(UpdateIsActiveUrl, { "id": id }, function (data) {
+
+                    console.log("IsActive hiện tại: "+ data);
+
+                    if ($("#btnnoibat-" + id).hasClass("btn-primary"))
+                    {
+                        $("#btnnoibat-" + id).removeClass("btn-primary");
+                        $("#btnnoibat-" + id).addClass("btn-danger");
+                        $("#btnnoibat-" + id).text("OFF");
+                    }
+                    else {
+                        $("#btnnoibat-" + id).removeClass("btn-danger");
+                        $("#btnnoibat-" + id).addClass("btn-primary");
+                        $("#btnnoibat-" + id).text("ON");
+
+                    }
+
                 });
 
             });

@@ -25,9 +25,9 @@
                         <th>Danh Mục</th>
                         <th>Tên Sản Phẩm</th>
                         <th>Màu Sắc</th>
-                        <th>Bảo hành</th>
                         <th>Giá</th>
                         <th>Tình Trạng</th>
+                        <th>Nổi Bật</th>
                         <th>Tùy Chọn</th>
                     </tr>
                 </thead>
@@ -39,7 +39,6 @@
                             <td>@item.tbl_Categories.Name</td>
                             <td>@item.Name</td>
                             <td>@item.Color</td>
-                            <td>@item.Warranty</td>
                             <td>@String.Format("{0:N0}", item.Price)</td>
                             <td class="text-center" id="IsActive-@item.Id">@if (item.IsActive==true) {
                                 <button class="btn btn-primary btnIsActive" id="btn-@item.Id" data-id="@item.Id" >ON</button>
@@ -47,6 +46,17 @@
                             else
                             {
                                 <button class="btn btn-danger btnIsActive" id="btn-@item.Id"  data-id="@item.Id" >OFF</button>
+                            }
+
+                            </td>
+                            <td class="text-center" id="NoiBat-@item.Id">
+                                @if (item.NoiBat == true)
+                            {
+                                <button class="btn btn-primary btnNoiBat" id="btnnoibat-@item.Id" data-id="@item.Id">ON</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger btnNoiBat" id="btnnoibat-@item.Id" data-id="@item.Id">OFF</button>
                             }
 
                             </td>

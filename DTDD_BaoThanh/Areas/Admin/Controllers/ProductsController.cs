@@ -198,6 +198,32 @@ namespace DTDD_BaoThanh.Areas.Admin.Controllers
 
         }
 
+        [HttpPost]
+        public void UpdateNoiBat(int id)
+        {
+            var product = db.tbl_Products.Find(id);
+
+            if (product.NoiBat == true)
+            {
+                product.NoiBat = false;
+            }
+            else
+            {
+                product.NoiBat = true;
+            }
+
+
+
+            db.Entry(product).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+
+            Response.Write(product.IsActive);
+
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

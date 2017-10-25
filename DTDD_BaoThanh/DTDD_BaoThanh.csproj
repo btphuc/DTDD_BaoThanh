@@ -350,6 +350,7 @@
     <Content Include="Views\Home\PriceHighToLow.cshtml" />
     <Content Include="Views\Home\OrderByCategory.cshtml" />
     <Content Include="Views\Home\TimTheoGia.cshtml" />
+    <Content Include="Views\Home\NoiBat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

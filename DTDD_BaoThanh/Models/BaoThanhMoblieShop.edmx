@@ -81,6 +81,7 @@
           <Property Name="Views" Type="int" />
           <Property Name="LastUpdate" Type="smalldatetime" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="NoiBat" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_Users">
           <Key>
@@ -329,6 +330,7 @@
           <Property Name="Views" Type="Int32" />
           <Property Name="LastUpdate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="NoiBat" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbl_Users">
           <Key>
@@ -567,6 +569,7 @@
           <EntitySetMapping Name="tbl_Products">
             <EntityTypeMapping TypeName="MobileShopModel.tbl_Products">
               <MappingFragment StoreEntitySet="tbl_Products">
+                <ScalarProperty Name="NoiBat" ColumnName="NoiBat" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
                 <ScalarProperty Name="Views" ColumnName="Views" />

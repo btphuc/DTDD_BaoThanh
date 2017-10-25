@@ -296,11 +296,11 @@ namespace DTDD_BaoThanh.Controllers
         #endregion
 
 
-        [HttpPost]
-        public ActionResult TimTheoGia (FormCollection f , int page = 1, int pagesize = 12)
+       
+        public ActionResult TimTheoGia (string GiaThap, string GiaCao , int page = 1, int pagesize = 12)
         {
-            decimal giathap = decimal.Parse( f["GiaThap"]);
-            decimal giacao = decimal.Parse(f["GiaCao"]);
+            decimal giathap = decimal.Parse( GiaThap);
+            decimal giacao = decimal.Parse(GiaCao);
 
 
             if (giathap > giacao)
@@ -310,7 +310,18 @@ namespace DTDD_BaoThanh.Controllers
                 giacao = temp;
             }
 
-            var kq = db.tbl_Products.OrderBy(x => x.Price).Where(x => x.Price >= giathap && x.Price <= giacao).ToPagedList(page, pagesize);
+            var kq = db.tbl_Products
+                .OrderBy(x => x.Price)
+                .Where(x => x.Price >= giathap && x.Price <= giacao)
+                .ToPagedList(page, pagesize);
+
+            return View(kq);
+        }
+
+        public ActionResult NoiBat(int page = 1, int pagesize = 12)
+        {
+          
+            var kq = db.tbl_Products.OrderBy(x => x.Price).Where(x=> x.NoiBat==true).ToPagedList(page, pagesize);
 
             return View(kq);
         }

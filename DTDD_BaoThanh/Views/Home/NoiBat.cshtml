@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "All";
+    ViewBag.Title = "Noi bat";
     Layout = " ~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,15 +13,7 @@
     </div>
 
     <div class="col md-10">
-        <div class="row">
-            <span class="text-info">Tìm theo giá</span>
-            @using (Html.BeginForm("TimTheoGia", "Home", FormMethod.Get, new { @class = "form-inline search-form" }))
-            {
-                <input class="form-control mr-sm-2 search-text" type="number" placeholder="Giá từ" aria-label="Search" id="GiaThap" name="GiaThap">
-                <input class="form-control mr-sm-2 search-text" type="number" placeholder="đến" aria-label="Search" id="GiaCao" name="GiaCao">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            }
-        </div>
+        <h3 class="text-info">Nổi Bật</h3>
         <div class="row sort-by">
             <nav class="nav">
                 <span class="nav-link">Tùy Chọn Xem :</span>
