@@ -351,6 +351,7 @@
     <Content Include="Views\Home\OrderByCategory.cshtml" />
     <Content Include="Views\Home\TimTheoGia.cshtml" />
     <Content Include="Views\Home\NoiBat.cshtml" />
+    <Content Include="Views\Home\menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

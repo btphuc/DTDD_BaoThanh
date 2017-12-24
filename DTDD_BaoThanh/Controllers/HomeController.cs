@@ -341,5 +341,14 @@ namespace DTDD_BaoThanh.Controllers
         }
 
         
+        public PartialViewResult menu()
+        {
+            var categories = db.tbl_Categories.ToList();
+
+            return PartialView(categories);
+
+        }
+
+
     }
 }
